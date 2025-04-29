@@ -1,0 +1,66 @@
+public class Solution {
+    public String removeOuterParentheses(String s) {
+        int count = 0;
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if (ch == ')') count--;
+
+            if (count != 0) ans.append(ch);
+
+            if (ch == '(') count++;
+        }
+
+        return ans.toString();
+    }
+
+    // Main method to test the function
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        String input = "(()())(())(()(()))";
+        String result = sol.removeOuterParentheses(input);
+
+        System.out.println("Input: " + input);
+        System.out.println("Output: " + result);
+    }
+}
+Approach 2
+import java.util.Stack;
+
+public class Solution {
+
+    public String removeOuterParentheses(String s) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder result = new StringBuilder();
+
+        for (char ch : s.toCharArray()) {
+            if (ch == '(') {
+                if (!stack.isEmpty()) {
+                    result.append(ch);  // not outermost
+                }
+                stack.push(ch);
+            } else if (ch == ')') {
+                stack.pop();
+                if (!stack.isEmpty()) {
+                    result.append(ch);  // not outermost
+                }
+            }
+        }
+
+        return result.toString();
+    }
+
+    // Main method to test
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        String input = "(()())(())(()(()))";
+        String output = sol.removeOuterParentheses(input);
+
+        System.out.println("Input: " + input);
+        System.out.println("Output: " + output);
+    }
+}
