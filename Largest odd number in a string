@@ -1,0 +1,26 @@
+public class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String num1 = "4206";
+        String num2 = "35427";
+        String num3 = "52";
+        String num4 = "13579";
+
+        System.out.println("Input: " + num1 + " → Output: " + solution.largestOddNumber(num1));
+        System.out.println("Input: " + num2 + " → Output: " + solution.largestOddNumber(num2));
+        System.out.println("Input: " + num3 + " → Output: " + solution.largestOddNumber(num3));
+        System.out.println("Input: " + num4 + " → Output: " + solution.largestOddNumber(num4));
+    }
+}
+
+class Solution {
+    public String largestOddNumber(String num) {
+        for (int i = num.length() - 1; i >= 0; i--) {
+            if (num.charAt(i) % 2 != 0) {
+                return num.substring(0, i + 1);
+            }
+        }
+        return "";
+    }
+}
