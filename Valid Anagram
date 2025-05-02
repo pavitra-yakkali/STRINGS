@@ -1,0 +1,32 @@
+public class Solution {
+
+    public boolean isAnagram(String s, String t) {
+        s = s.toLowerCase();
+        t = t.toLowerCase();
+        s = s.replace(" ", "");
+        t = t.replace(" ", "");
+
+        int[] ba = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            ba[s.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < t.length(); i++) {
+            ba[t.charAt(i) - 'a']--;
+        }
+        for (int count : ba) {
+            if (count != 0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        // Test cases
+        System.out.println(sol.isAnagram("Listen", "Silent"));      // true
+        System.out.println(sol.isAnagram("A gentleman", "Elegant man")); // true
+        System.out.println(sol.isAnagram("School master", "The classroom")); // true
+        System.out.println(sol.isAnagram("Hello", "Oleh"));         // false
+        System.out.println(sol.isAnagram("anagram", "nagaramm"));   // false
+    }
+}
