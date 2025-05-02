@@ -1,0 +1,30 @@
+public class Solution {
+
+    public boolean rotateString(String s, String goal) {
+        if (s.length() != goal.length())
+            return false;
+        return (s + s).contains(goal);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test cases
+        String s1 = "abcde";
+        String goal1 = "cdeab";  // true
+
+        String s2 = "abcde";
+        String goal2 = "abced";  // false
+
+        String s3 = "aab";
+        String goal3 = "aba";    // false
+
+        String s4 = "rotation";
+        String goal4 = "tationro"; // true
+
+        System.out.println(s1 + " → " + goal1 + " : " + solution.rotateString(s1, goal1));
+        System.out.println(s2 + " → " + goal2 + " : " + solution.rotateString(s2, goal2));
+        System.out.println(s3 + " → " + goal3 + " : " + solution.rotateString(s3, goal3));
+        System.out.println(s4 + " → " + goal4 + " : " + solution.rotateString(s4, goal4));
+    }
+}
